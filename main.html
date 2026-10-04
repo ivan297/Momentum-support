@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Momentum Support</title>
+<meta name="description" content="Get help with the Momentum fitness tracker app.">
+<style>
+  :root {
+    --bg: #000000;
+    --card: #1c1c1e;
+    --card-hi: #26262a;
+    --line: #2c2c30;
+    --text: #ffffff;
+    --muted: #8e8e93;
+    --purple: #a855f7;
+    --purple-soft: rgba(168, 85, 247, 0.14);
+    --green: #4ade80;
+    --blue: #60a5fa;
+    --amber: #fbbf24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    padding: max(24px, env(safe-area-inset-top)) 20px max(40px, env(safe-area-inset-bottom));
+  }
+  main { max-width: 680px; margin: 0 auto; }
+
+  header { padding: 40px 0 28px; }
+  h1 { font-size: clamp(2.6rem, 9vw, 3.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+  .sub { color: var(--muted); font-size: 1.1rem; margin-top: 10px; max-width: 46ch; }
+
+  .card { background: var(--card); border-radius: 24px; padding: 24px; }
+
+  /* Contact card: purple spine like the workout cards in the app */
+  .contact {
+    border-left: 4px solid var(--purple);
+    border-radius: 8px 24px 24px 8px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .contact h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; }
+  .contact p { color: var(--muted); }
+  .email {
+    display: inline-flex; align-items: center; gap: 10px; align-self: flex-start;
+    background: var(--purple); color: #fff; text-decoration: none; font-weight: 700;
+    padding: 14px 22px; border-radius: 16px; font-size: 1rem; word-break: break-all;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .email:hover { background: #b76cf9; }
+  .email:active { transform: scale(0.97); }
+  .email svg { flex: none; }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .pill { background: var(--card); color: var(--muted); font-weight: 600; font-size: .95rem; padding: 10px 18px; border-radius: 999px; }
+  .pill b { color: var(--text); font-weight: 600; }
+
+  h2.section { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 44px 0 16px; }
+
+  .faq { display: flex; flex-direction: column; gap: 12px; }
+  details { background: var(--card); border-radius: 20px; overflow: hidden; }
+  summary {
+    list-style: none; cursor: pointer; padding: 20px 22px; font-weight: 700; font-size: 1.05rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+"; flex: none; width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center; background: var(--purple-soft); color: var(--purple);
+    font-size: 1.3rem; font-weight: 500; line-height: 1; transition: transform .2s ease;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { padding: 0 22px 22px; color: var(--muted); }
+  details p b { color: var(--text); font-weight: 600; }
+  summary:focus-visible, .email:focus-visible, a:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .tag { font-size: .75rem; font-weight: 700; letter-spacing: .06em; padding: 6px 12px; border-radius: 10px; border: 1px solid; }
+  .t-green { color: var(--green); background: rgba(74,222,128,.1); border-color: rgba(74,222,128,.3); }
+  .t-blue { color: var(--blue); background: rgba(96,165,250,.1); border-color: rgba(96,165,250,.3); }
+  .t-amber { color: var(--amber); background: rgba(251,191,36,.1); border-color: rgba(251,191,36,.3); }
+  .t-purple { color: var(--purple); background: var(--purple-soft); border-color: rgba(168,85,247,.35); }
+
+  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+  footer a { color: var(--purple); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Momentum<br>Support</h1>
+    <p class="sub">Stuck on something or found a bug? We're here to help you get back to training.</p>
+  </header>
+
+  <section class="card contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact us</h2>
+    <p>Email us and we'll get back to you within 48 hours. Include your iPhone model and iOS version if you're reporting a bug.</p>
+    <a class="email" href="mailto:support.from.momentum@gmail.com?subject=Momentum%20Support">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+      support.from.momentum@gmail.com
+    </a>
+  </section>
+
+  <div class="pills" aria-label="Response info">
+    <span class="pill"><b>48h</b> reply time</span>
+    <span class="pill"><b>7 days</b> a week</span>
+  </div>
+
+  <h2 class="section">Frequently asked questions</h2>
+  <div class="faq">
+    <details>
+      <summary>How do I cancel my subscription?</summary>
+      <p>Subscriptions are managed by Apple. On your iPhone open <b>Settings</b>, tap your name, then <b>Subscriptions</b>, choose Momentum and tap <b>Cancel Subscription</b>. You keep access until the end of the billing period.</p>
+    </details>
+    <details>
+      <summary>How do I restore my purchases?</summary>
+      <p>Open the app and look for <b>Restore Purchases</b> on the subscription screen or in your profile settings. Make sure you're signed in with the same Apple ID you used to buy. If it still doesn't work, email us.</p>
+    </details>
+    <details>
+      <summary>How does the AI Coach work?</summary>
+      <p>The AI Coach gives training suggestions based on the workouts you log. It's meant for general fitness guidance and is not medical advice. Talk to a doctor before starting a new exercise program, especially if you have an injury or health condition.</p>
+    </details>
+    <details>
+      <summary>How do I delete my account and data?</summary>
+      <p>Email us from the address you used in the app with the subject <b>Delete my data</b>. We'll confirm and remove your data.</p>
+    </details>
+    <details>
+      <summary>I found a bug or have an idea</summary>
+      <p>We'd love to hear it. Send us a short description, and a screenshot if you can. Feedback from lifters like you shapes what we build next.</p>
+    </details>
+  </div>
+
+  <footer>
+    <span>&copy; 2026 Momentum</span>
+  </footer>
+</main>
+</body>
+</html>
